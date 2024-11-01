@@ -2,14 +2,15 @@ package StudyCasePemdas;
 import java.util.Scanner;
 
 public class Travel12 {
+    public static String[][] dataString = new String[5][10];
+    public static long[][] dataLong = new long[3][10];
+    public static char[] dataChar = new char[10];
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n, lengthOfTmpDatas = 1;
         boolean stop = false;
         boolean inputAgain = false;
-        String[][] dataString = new String[5][0];
-        long[][] dataLong = new long[2][0];
-        char[] dataChar = new char[0];
 
         while (!stop) {
             System.out.println("\nMenu:");
@@ -29,7 +30,7 @@ public class Travel12 {
 
                         //temp data
                         String[][] dataStringTmp = new String[5][lengthOfTmpDatas];
-                        long[][] dataLongTmp = new long[2][lengthOfTmpDatas];
+                        long[][] dataLongTmp = new long[3][lengthOfTmpDatas];
                         char[] dataCharTmp = new char[lengthOfTmpDatas];
                         
                         //isi temp ke data asli
@@ -55,8 +56,13 @@ public class Travel12 {
                         System.out.printf("%-20s: ", "Shift");              dataStringTmp[3][lengthOfTmpDatas-1] = in.nextLine();
                         System.out.printf("%-20s: ", "Nama Bank");          dataStringTmp[4][lengthOfTmpDatas-1] = in.nextLine();
                         System.out.printf("%-20s: ", "No. Telepon");        dataLongTmp[0][lengthOfTmpDatas-1] = in.nextLong();
-                        System.out.printf("%-20s: ", "No. Rekening");        dataLongTmp[1][lengthOfTmpDatas-1] = in.nextLong();
+                        System.out.printf("%-20s: ", "No. Rekening");       dataLongTmp[1][lengthOfTmpDatas-1] = in.nextLong();
                         System.out.printf("%-20s: ", "Jenis Kelamin");      dataCharTmp[lengthOfTmpDatas-1] = in.next().charAt(0);
+                        
+                        //generate token
+                        dataLongTmp[2][lengthOfTmpDatas-1] = (long) (1+(Math.random()*100000));
+
+                        System.out.printf("%-20s: %5d", "Token", dataLongTmp[2][lengthOfTmpDatas-1]);
                         in.nextLine();
                         lengthOfTmpDatas++;
 
@@ -65,9 +71,9 @@ public class Travel12 {
                         
                         
                         //data asli
-                        dataString = new String[5][lengthOfTmpDatas-1];
-                        dataLong = new long[2][lengthOfTmpDatas-1];
-                        dataChar = new char[lengthOfTmpDatas-1];
+                        Travel12.dataString = new String[5][lengthOfTmpDatas-1];
+                        Travel12.dataLong = new long[3][lengthOfTmpDatas-1];
+                        Travel12.dataChar = new char[lengthOfTmpDatas-1];
             
                         //temp ke data asli
                         for (int i = 0; i < lengthOfTmpDatas-1; i++) {
@@ -119,7 +125,8 @@ public class Travel12 {
                         System.out.printf("%-20s: %s\n", "Nama Bank", dataString[4][i]);
                         System.out.printf("%-20s: %d\n", "No. Telepon", dataLong[0][i]);
                         System.out.printf("%-20s: %d\n", "No.Rekening", dataLong[1][i]);
-                        System.out.printf("%-20s: %c\n\n", "Jenis Kelamin", dataChar[i]);
+                        System.out.printf("%-20s: %c\n", "Jenis Kelamin", dataChar[i]);
+                        System.out.printf("%-20s: %d\n\n", "Token", dataLong[2][i]);
                     }
                 }
             }
@@ -138,7 +145,8 @@ public class Travel12 {
                         System.out.printf("%-20s: %s\n", "Nama Bank", dataString[4][i]);
                         System.out.printf("%-20s: %d\n", "No. Telepon", dataLong[0][i]);
                         System.out.printf("%-20s: %d\n", "No.Rekening", dataLong[1][i]);
-                        System.out.printf("%-20s: %c\n\n", "Jenis Kelamin", dataChar[i]);
+                        System.out.printf("%-20s: %c\n", "Jenis Kelamin", dataChar[i]);
+                        System.out.printf("%-20s: %d\n\n", "Token", dataLong[2][i]);
                     }
                 }
             }
@@ -157,7 +165,8 @@ public class Travel12 {
                         System.out.printf("%-20s: %s\n", "Nama Bank", dataString[4][i]);
                         System.out.printf("%-20s: %d\n", "No. Telepon", dataLong[0][i]);
                         System.out.printf("%-20s: %d\n", "No.Rekening", dataLong[1][i]);
-                        System.out.printf("%-20s: %c\n\n", "Jenis Kelamin", dataChar[i]);
+                        System.out.printf("%-20s: %c\n", "Jenis Kelamin", dataChar[i]);
+                        System.out.printf("%-20s: %d\n\n", "Token", dataLong[2][i]);
                     }
                 }
             }
