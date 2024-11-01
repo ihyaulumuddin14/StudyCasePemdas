@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class FilkomTourAndTravel {
+public class TravelSewa {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
