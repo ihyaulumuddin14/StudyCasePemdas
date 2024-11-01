@@ -1,4 +1,4 @@
-package TravelSewa;
+package StudyCasePemdas;
 import java.util.Scanner;
 public class TravelSewa {
     public static void main(String[] args) {
