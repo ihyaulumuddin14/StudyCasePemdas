@@ -1,0 +1,159 @@
+package StudyCasePemdas;
+import java.util.Scanner;
+
+public class Travel1 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n, lengthOfTmpDatas = 1;
+        boolean stop = false;
+        boolean inputAgain = false;
+        String[][] dataString = new String[5][0];
+        long[][] dataLong = new long[2][0];
+        char[] dataChar = new char[0];
+
+
+        while (!stop) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Input Data Karyawan");
+            System.out.println("2. Lihat Data Karyawan");
+            System.out.println("0. Keluar");
+            System.out.print("Masukkan menu pilihan: ");
+            n = in.nextInt();
+            in.nextLine();
+            switch (n) {
+                case 1 -> {
+                    while (!inputAgain) {
+                        String[][] dataStringTmp = new String[5][lengthOfTmpDatas];
+                        long[][] dataLongTmp = new long[2][lengthOfTmpDatas];
+                        char[] dataCharTmp = new char[lengthOfTmpDatas];
+
+                        for (int i = 0; i < lengthOfTmpDatas-1; i++) {
+                            for (int j = 0; j < dataString.length; j++) {
+                                dataStringTmp[j][i] = dataString[j][i];
+                            }
+                        }
+
+                        for (int i = 0; i < lengthOfTmpDatas-1; i++) {
+                            for (int j = 0; j < dataLongTmp.length; j++) {
+                                dataLongTmp[j][i] = dataLong[j][i];
+                            }
+                        }
+
+                        for (int i = 0; i < dataCharTmp.length-1; i++) {
+                            dataCharTmp[i] = dataChar[i];
+                        }
+
+                        System.out.println("\nINPUT KARYAWAN BARU");
+                        System.out.printf("%-20s: ", "Nama");               dataStringTmp[0][lengthOfTmpDatas-1] = in.nextLine();
+                        System.out.printf("%-20s: ", "Alamat");             dataStringTmp[1][lengthOfTmpDatas-1] = in.nextLine();
+                        System.out.printf("%-20s: ", "Kategori Karyawan");  dataStringTmp[2][lengthOfTmpDatas-1] = in.nextLine();
+                        System.out.printf("%-20s: ", "Shift");              dataStringTmp[3][lengthOfTmpDatas-1] = in.nextLine();
+                        System.out.printf("%-20s: ", "Nama Bank");          dataStringTmp[4][lengthOfTmpDatas-1] = in.nextLine();
+                        System.out.printf("%-20s: ", "No. Telepon");        dataLongTmp[0][lengthOfTmpDatas-1] = in.nextLong();
+                        System.out.printf("%-20s: ", "No.Rekening");        dataLongTmp[1][lengthOfTmpDatas-1] = in.nextLong();
+                        System.out.printf("%-20s: ", "Jenis Kelamin");      dataCharTmp[lengthOfTmpDatas-1] = in.next().charAt(0);
+                        in.nextLine();
+                        lengthOfTmpDatas++;
+
+                        dataString = new String[5][lengthOfTmpDatas-1];
+                        dataLong = new long[2][lengthOfTmpDatas-1];
+                        dataChar = new char[lengthOfTmpDatas-1];
+
+                        for (int i = 0; i < lengthOfTmpDatas-1; i++) {
+                            for (int j = 0; j < dataString.length; j++) {
+                                dataString[j][i] = dataStringTmp[j][i];
+                            }
+                        }
+
+                        for (int i = 0; i < lengthOfTmpDatas-1; i++) {
+                            for (int j = 0; j < dataLong.length; j++) {
+                                dataLong[j][i] = dataLongTmp[j][i];
+                            }
+                        }
+
+                        for (int i = 0; i < dataChar.length; i++) {
+                            dataChar[i] = dataCharTmp[i];
+                        }
+
+                        System.out.print("\nInput Lagi? (YA/TIDAK): "); String yesOrNo = in.nextLine();
+                        inputAgain = (yesOrNo.equalsIgnoreCase("YA")) ? false : true;
+                    }
+                }
+                case 2 -> {tampilNama(dataString, dataLong, dataChar);}
+                case 0 -> {stop = true;}
+                default -> {
+                    System.out.println("Tidak terdeteksi, silakan input lagi..");
+                }
+            }
+        }
+    }
+
+    public static void tampilNama(String[][] dataString, long[][] dataLong, char[] dataChar) {
+        String urutanST = "", urutanSRC = "", urutanAdm = "";
+        for (int i = 0; i < dataString[2].length; i++) {
+            if (dataString[2][i].equalsIgnoreCase("Supir Travel")) urutanST += i + " ";
+            else if (dataString[2][i].equalsIgnoreCase("Supir Rent Car")) urutanSRC += i + " ";
+            else if (dataString[2][i].equalsIgnoreCase("Admin")) urutanAdm += i + " ";
+        }
+
+        String[] indeksST = urutanST.split(" ");
+        String[] indeksSRC = urutanSRC.split(" ");
+        String[] indeksAdm = urutanAdm.split(" ");
+
+        System.out.println("\nSUPIR TRAVEL");
+        if (!urutanST.isEmpty()) {
+            for (int i = 0; i < dataChar.length; i++) {
+                for (int j = 0; j < indeksST.length; j++) {
+                    if (i == Integer.parseInt(indeksST[j])) {
+                        System.out.printf("%-20s: %s\n", "Nama", dataString[0][i]);
+                        System.out.printf("%-20s: %s\n", "Alamat", dataString[1][i]);
+                        System.out.printf("%-20s: %s\n", "Kategori Karyawan", dataString[2][i]);
+                        System.out.printf("%-20s: %s\n", "Shift", dataString[3][i]);
+                        System.out.printf("%-20s: %s\n", "Nama Bank", dataString[4][i]);
+                        System.out.printf("%-20s: %d\n", "No. Telepon", dataLong[0][i]);
+                        System.out.printf("%-20s: %d\n", "No.Rekening", dataLong[1][i]);
+                        System.out.printf("%-20s: %c\n\n", "Jenis Kelamin", dataChar[i]);
+                    }
+                }
+            }
+        } else System.out.println("-\n");
+        
+
+        System.out.println("SUPIR RENT CAR");
+        if (!urutanSRC.isEmpty()) {
+            for (int i = 0; i < dataChar.length; i++) {
+                for (int j = 0; j < indeksSRC.length; j++) {
+                    if (i == Integer.parseInt(indeksSRC[j])) {
+                        System.out.printf("%-20s: %s\n", "Nama", dataString[0][i]);
+                        System.out.printf("%-20s: %s\n", "Alamat", dataString[1][i]);
+                        System.out.printf("%-20s: %s\n", "Kategori Karyawan", dataString[2][i]);
+                        System.out.printf("%-20s: %s\n", "Shift", dataString[3][i]);
+                        System.out.printf("%-20s: %s\n", "Nama Bank", dataString[4][i]);
+                        System.out.printf("%-20s: %d\n", "No. Telepon", dataLong[0][i]);
+                        System.out.printf("%-20s: %d\n", "No.Rekening", dataLong[1][i]);
+                        System.out.printf("%-20s: %c\n\n", "Jenis Kelamin", dataChar[i]);
+                    }
+                }
+            }
+        } else System.out.println("-\n");
+        
+
+        System.out.println("ADMIN");
+        if (!urutanAdm.isEmpty()) {
+            for (int i = 0; i < dataChar.length; i++) {
+                for (int j = 0; j < indeksAdm.length; j++) {
+                    if (i == Integer.parseInt(indeksAdm[j])) {
+                        System.out.printf("%-20s: %s\n", "Nama", dataString[0][i]);
+                        System.out.printf("%-20s: %s\n", "Alamat", dataString[1][i]);
+                        System.out.printf("%-20s: %s\n", "Kategori Karyawan", dataString[2][i]);
+                        System.out.printf("%-20s: %s\n", "Shift", dataString[3][i]);
+                        System.out.printf("%-20s: %s\n", "Nama Bank", dataString[4][i]);
+                        System.out.printf("%-20s: %d\n", "No. Telepon", dataLong[0][i]);
+                        System.out.printf("%-20s: %d\n", "No.Rekening", dataLong[1][i]);
+                        System.out.printf("%-20s: %c\n\n", "Jenis Kelamin", dataChar[i]);
+                    }
+                }
+            }
+        } else System.out.println("-\n");
+    }
+}
