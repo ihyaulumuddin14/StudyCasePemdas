@@ -55,7 +55,7 @@ public class Travel12 {
                         System.out.printf("%-20s: ", "Shift");              dataStringTmp[3][lengthOfTmpDatas-1] = in.nextLine();
                         System.out.printf("%-20s: ", "Nama Bank");          dataStringTmp[4][lengthOfTmpDatas-1] = in.nextLine();
                         System.out.printf("%-20s: ", "No. Telepon");        dataLongTmp[0][lengthOfTmpDatas-1] = in.nextLong();
-                        System.out.printf("%-20s: ", "No. Rekening");        dataLongTmp[1][lengthOfTmpDatas-1] = in.nextLong();
+                        System.out.printf("%-20s: ", "No. Rekening");       dataLongTmp[1][lengthOfTmpDatas-1] = in.nextLong();
                         System.out.printf("%-20s: ", "Jenis Kelamin");      dataCharTmp[lengthOfTmpDatas-1] = in.next().charAt(0);
                         in.nextLine();
                         lengthOfTmpDatas++;
@@ -96,22 +96,22 @@ public class Travel12 {
     }
 
     public static void tampilNama(String[][] dataString, long[][] dataLong, char[] dataChar) {
-        String urutanST = "", urutanSRC = "", urutanAdm = "";
+        String sequenceST = "", sequenceSRC = "", sequenceAdm = "";
         for (int i = 0; i < dataString[2].length; i++) {
-            if (dataString[2][i].equalsIgnoreCase("Supir Travel")) urutanST += i + " ";
-            else if (dataString[2][i].equalsIgnoreCase("Supir Rent Car")) urutanSRC += i + " ";
-            else if (dataString[2][i].equalsIgnoreCase("Admin")) urutanAdm += i + " ";
+            if (dataString[2][i].equalsIgnoreCase("Supir Travel")) sequenceST += i + " ";
+            else if (dataString[2][i].equalsIgnoreCase("Supir Rent Car")) sequenceSRC += i + " ";
+            else if (dataString[2][i].equalsIgnoreCase("Admin")) sequenceAdm += i + " ";
         }
 
-        String[] indeksST = urutanST.split(" ");
-        String[] indeksSRC = urutanSRC.split(" ");
-        String[] indeksAdm = urutanAdm.split(" ");
+        String[] indexST = sequenceST.split(" ");
+        String[] indexSRC = sequenceSRC.split(" ");
+        String[] indexAdm = sequenceAdm.split(" ");
 
         System.out.println("\nSUPIR TRAVEL");
-        if (!urutanST.isEmpty()) {
+        if (!sequenceST.isEmpty()) {
             for (int i = 0; i < dataChar.length; i++) {
-                for (int j = 0; j < indeksST.length; j++) {
-                    if (i == Integer.parseInt(indeksST[j])) {
+                for (int j = 0; j < indexST.length; j++) {
+                    if (i == Integer.parseInt(indexST[j])) {
                         System.out.printf("%-20s: %s\n", "Nama", dataString[0][i]);
                         System.out.printf("%-20s: %s\n", "Alamat", dataString[1][i]);
                         System.out.printf("%-20s: %s\n", "Kategori Karyawan", dataString[2][i]);
@@ -127,10 +127,10 @@ public class Travel12 {
         
 
         System.out.println("\nSUPIR RENT CAR");
-        if (!urutanSRC.isEmpty()) {
+        if (!sequenceSRC.isEmpty()) {
             for (int i = 0; i < dataChar.length; i++) {
-                for (int j = 0; j < indeksSRC.length; j++) {
-                    if (i == Integer.parseInt(indeksSRC[j])) {
+                for (int j = 0; j < indexSRC.length; j++) {
+                    if (i == Integer.parseInt(indexSRC[j])) {
                         System.out.printf("%-20s: %s\n", "Nama", dataString[0][i]);
                         System.out.printf("%-20s: %s\n", "Alamat", dataString[1][i]);
                         System.out.printf("%-20s: %s\n", "Kategori Karyawan", dataString[2][i]);
@@ -146,10 +146,10 @@ public class Travel12 {
         
 
         System.out.println("\nADMIN");
-        if (!urutanAdm.isEmpty()) {
+        if (!sequenceAdm.isEmpty()) {
             for (int i = 0; i < dataChar.length; i++) {
-                for (int j = 0; j < indeksAdm.length; j++) {
-                    if (i == Integer.parseInt(indeksAdm[j])) {
+                for (int j = 0; j < indexAdm.length; j++) {
+                    if (i == Integer.parseInt(indexAdm[j])) {
                         System.out.printf("%-20s: %s\n", "Nama", dataString[0][i]);
                         System.out.printf("%-20s: %s\n", "Alamat", dataString[1][i]);
                         System.out.printf("%-20s: %s\n", "Kategori Karyawan", dataString[2][i]);

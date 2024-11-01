@@ -6,19 +6,23 @@ public class Travel13 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        String[] stringKategori = {"Supir Travel", "Supir Rent Car", "Admin"};
-        String kategori;
-        int n, uangLembur, gajiPokok = 0, indexOfKategori = 0;
-        double[][] hitungGaji = {
+        String[] arrOfCategory = {"Supir Travel", "Supir Rent Car", "Admin"};
+        String category, name;
+        int n, overTimePay, bSalary = 0, indexOfCategory = 0;
+        double[][] calculateSalary = {
             {1500000, 1750000, 2000000},
             {20000, 45000, 40000},
             {5/100.0, 6/100.0, 7/100.0}
         };
-        double gajiBersih = 0;
+        double netSalary = 0;
         boolean stop = false, inputAgain = false;
 
         while (!stop) {
-
+            System.out.println("DAFTAR GAJI POKOK");
+            System.out.printf("%-15s : 1.500.000\n", "Supir Travel");
+            System.out.printf("%-15s : 1.750.000\n", "Supir Rent Car");
+            System.out.printf("%-15s : 2.000.000\n", "Admin");
+            System.out.println("==========================================================");
             System.out.println("Menu");
             System.out.println("1. Hitung Gaji");
             System.out.println("0. Keluar");
@@ -28,11 +32,12 @@ public class Travel13 {
 
             switch(n) {
                 case 1 -> {
+                    System.out.printf("%-15s: ", "Nama"); name = in.nextLine();
                     while (!inputAgain) {
-                        System.out.printf("%-15s: ", "Kategori"); kategori = in.nextLine();
-                        for (int i = 0; i < stringKategori.length; i++) {
-                            if (kategori.equalsIgnoreCase(stringKategori[i])) {
-                                indexOfKategori = i;
+                        System.out.printf("%-15s: ", "Kategori"); category = in.nextLine();
+                        for (int i = 0; i < arrOfCategory.length; i++) {
+                            if (category.equalsIgnoreCase(arrOfCategory[i])) {
+                                indexOfCategory = i;
                                 inputAgain = true;
                             }
                         }
@@ -41,20 +46,21 @@ public class Travel13 {
                     
 
                     while (!inputAgain) {
-                        System.out.printf("%-15s: ", "Gaji Pokok"); gajiPokok = in.nextInt();
-                        for (int i = 0; i < hitungGaji[0].length; i++) {
-                            if (gajiPokok == hitungGaji[0][indexOfKategori]) {
+                        System.out.printf("%-15s: ", "Gaji Pokok"); bSalary = in.nextInt();
+                        for (int i = 0; i < calculateSalary[0].length; i++) {
+                            if (bSalary == calculateSalary[0][indexOfCategory]) {
                                 inputAgain = true;
                             }
                         }
-                        if (inputAgain == false) System.out.println("Gaji pokok tidak sesuai dengan kategori.");
+                        if (inputAgain == false) System.out.println("Gaji Pokok tidak sesuai dengan kategori.");
                     } inputAgain = false;
 
-                    System.out.printf("%-15s: ", "Jam Lembur"); uangLembur = in.nextInt();
-                    uangLembur *= hitungGaji[1][indexOfKategori];
-                    gajiBersih = (gajiPokok + uangLembur) - hitungGaji[2][indexOfKategori]*(gajiPokok + uangLembur);
+                    System.out.printf("%-15s: ", "Jam Lembur"); overTimePay = in.nextInt();
+                    System.out.printf("%-15s: %.0f%s\n", "Pajak", (calculateSalary[2][indexOfCategory]*100), "%");
+                    overTimePay *= calculateSalary[1][indexOfCategory];
+                    netSalary = (bSalary + overTimePay) - (calculateSalary[2][indexOfCategory]*(bSalary + overTimePay));
 
-                    tampilGaji(gajiBersih);
+                    tampilGaji(netSalary, name);
                 }
 
                 case 0 -> {
@@ -69,7 +75,7 @@ public class Travel13 {
         }
     }
 
-    public static void tampilGaji(double gajiBersih) {
-        System.out.printf("%-15s: Rp.%.0f\n\n","Gaji Bersih", gajiBersih);
+    public static void tampilGaji(double netSalary, String name) {
+        System.out.printf("%s %s adalah Rp.%.0f\n\n","Gaji Bersih", name, netSalary);
     }
 }
