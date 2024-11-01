@@ -1,3 +1,4 @@
+package StudyCasePemdas;
 
 import java.util.Scanner;
 public class dataMobil22 {
