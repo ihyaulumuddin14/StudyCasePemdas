@@ -1,7 +1,7 @@
 package StudyCasePemdas;
 import java.util.Scanner;
 
-public class Travel1 {
+public class Travel12 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n, lengthOfTmpDatas = 1;
