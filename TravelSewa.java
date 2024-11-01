@@ -48,6 +48,7 @@ public class TravelSewa {
                     detailLayanan[transaksiIndex] = rute[rutePilihan - 1];
                     jumlahTagihan[transaksiIndex] = hargaTravel;
                     transaksiIndex++;
+                    System.out.println("==========================================================\n");
                     System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
                     System.out.println("----------------------------------------------------------");
                     System.out.printf("%-5d %-15s %-20s Rp %-12d\n", transaksiCounter - 1, "Travel", rute[rutePilihan - 1], hargaTravel);
@@ -73,6 +74,7 @@ public class TravelSewa {
                 detailLayanan[transaksiIndex] = sewaJam + " jam";
                 jumlahTagihan[transaksiIndex] = hargaTotal;
                 transaksiIndex++;
+                System.out.println("==========================================================\n");
                 System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
                 System.out.println("----------------------------------------------------------");
                 System.out.printf("%-5d %-15s %-20s Rp %-12d\n", transaksiCounter - 1, "Sewa Mobil", sewaJam + " jam", hargaTotal);
