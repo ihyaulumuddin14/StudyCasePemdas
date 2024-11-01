@@ -11,7 +11,6 @@ public class Travel12 {
         long[][] dataLong = new long[2][0];
         char[] dataChar = new char[0];
 
-
         while (!stop) {
             System.out.println("\nMenu:");
             System.out.println("1. Input Data Karyawan");
@@ -20,28 +19,34 @@ public class Travel12 {
             System.out.print("Masukkan menu pilihan: ");
             n = in.nextInt();
             in.nextLine();
+
+            
+            //switch
             switch (n) {
                 case 1 -> {
                     while (!inputAgain) {
+
+
+                        //temp data
                         String[][] dataStringTmp = new String[5][lengthOfTmpDatas];
                         long[][] dataLongTmp = new long[2][lengthOfTmpDatas];
                         char[] dataCharTmp = new char[lengthOfTmpDatas];
-
+                        
+                        //isi temp ke data asli
                         for (int i = 0; i < lengthOfTmpDatas-1; i++) {
                             for (int j = 0; j < dataString.length; j++) {
                                 dataStringTmp[j][i] = dataString[j][i];
                             }
                         }
-
                         for (int i = 0; i < lengthOfTmpDatas-1; i++) {
                             for (int j = 0; j < dataLongTmp.length; j++) {
                                 dataLongTmp[j][i] = dataLong[j][i];
                             }
                         }
-
                         for (int i = 0; i < dataCharTmp.length-1; i++) {
                             dataCharTmp[i] = dataChar[i];
                         }
+
 
                         System.out.println("\nINPUT KARYAWAN BARU");
                         System.out.printf("%-20s: ", "Nama");               dataStringTmp[0][lengthOfTmpDatas-1] = in.nextLine();
@@ -50,41 +55,43 @@ public class Travel12 {
                         System.out.printf("%-20s: ", "Shift");              dataStringTmp[3][lengthOfTmpDatas-1] = in.nextLine();
                         System.out.printf("%-20s: ", "Nama Bank");          dataStringTmp[4][lengthOfTmpDatas-1] = in.nextLine();
                         System.out.printf("%-20s: ", "No. Telepon");        dataLongTmp[0][lengthOfTmpDatas-1] = in.nextLong();
-                        System.out.printf("%-20s: ", "No.Rekening");        dataLongTmp[1][lengthOfTmpDatas-1] = in.nextLong();
+                        System.out.printf("%-20s: ", "No. Rekening");        dataLongTmp[1][lengthOfTmpDatas-1] = in.nextLong();
                         System.out.printf("%-20s: ", "Jenis Kelamin");      dataCharTmp[lengthOfTmpDatas-1] = in.next().charAt(0);
                         in.nextLine();
                         lengthOfTmpDatas++;
 
+                        System.out.print("\nInput Lagi? (YA/TIDAK): "); String yesOrNo = in.nextLine();
+                        inputAgain = (yesOrNo.equalsIgnoreCase("YA")) ? false : true;
+                        
+                        
+                        //data asli
                         dataString = new String[5][lengthOfTmpDatas-1];
                         dataLong = new long[2][lengthOfTmpDatas-1];
                         dataChar = new char[lengthOfTmpDatas-1];
-
+            
+                        //temp ke data asli
                         for (int i = 0; i < lengthOfTmpDatas-1; i++) {
                             for (int j = 0; j < dataString.length; j++) {
                                 dataString[j][i] = dataStringTmp[j][i];
                             }
                         }
-
                         for (int i = 0; i < lengthOfTmpDatas-1; i++) {
                             for (int j = 0; j < dataLong.length; j++) {
                                 dataLong[j][i] = dataLongTmp[j][i];
                             }
                         }
-
                         for (int i = 0; i < dataChar.length; i++) {
                             dataChar[i] = dataCharTmp[i];
                         }
 
-                        System.out.print("\nInput Lagi? (YA/TIDAK): "); String yesOrNo = in.nextLine();
-                        inputAgain = (yesOrNo.equalsIgnoreCase("YA")) ? false : true;
-                    }
+
+                    } inputAgain = false;
                 }
                 case 2 -> {tampilNama(dataString, dataLong, dataChar);}
                 case 0 -> {stop = true;}
-                default -> {
-                    System.out.println("Tidak terdeteksi, silakan input lagi..");
-                }
+                default -> {System.out.println("Tidak terdeteksi, silakan input lagi..");}
             }
+
         }
     }
 
@@ -119,7 +126,7 @@ public class Travel12 {
         } else System.out.println("-\n");
         
 
-        System.out.println("SUPIR RENT CAR");
+        System.out.println("\nSUPIR RENT CAR");
         if (!urutanSRC.isEmpty()) {
             for (int i = 0; i < dataChar.length; i++) {
                 for (int j = 0; j < indeksSRC.length; j++) {
@@ -138,7 +145,7 @@ public class Travel12 {
         } else System.out.println("-\n");
         
 
-        System.out.println("ADMIN");
+        System.out.println("\nADMIN");
         if (!urutanAdm.isEmpty()) {
             for (int i = 0; i < dataChar.length; i++) {
                 for (int j = 0; j < indeksAdm.length; j++) {
