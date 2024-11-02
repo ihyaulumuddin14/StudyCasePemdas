@@ -7,9 +7,13 @@ public class Travel12 {
         int n, lengthOfTmpDatas = 1;
         boolean stop = false;
         boolean inputAgain = false;
+        boolean inputAgainisValid = false;
         String[][] dataString = new String[5][0];
         long[][] dataLong = new long[2][0];
         char[] dataChar = new char[0];
+
+        System.out.println("\nSELAMAT DATANG DI APLIKASI FILKOM TOUR AND TRAVEL");
+        System.out.println("Manajemen Karyawan");
 
         while (!stop) {
             System.out.println("\nMenu:");
@@ -19,13 +23,11 @@ public class Travel12 {
             System.out.print("Masukkan menu pilihan: ");
             n = in.nextInt();
             in.nextLine();
-
             
             //switch
             switch (n) {
                 case 1 -> {
                     while (!inputAgain) {
-
 
                         //temp data
                         String[][] dataStringTmp = new String[5][lengthOfTmpDatas];
@@ -48,7 +50,7 @@ public class Travel12 {
                         }
 
 
-                        System.out.println("\nINPUT KARYAWAN BARU");
+                        System.out.println("\nINPUT KARYAWAN BARU\nPILIHAN KATEGORI KARYAWAN: Supir Travel, Supir Rent Car, Admin");
                         System.out.printf("%-20s: ", "Nama");               dataStringTmp[0][lengthOfTmpDatas-1] = in.nextLine();
                         System.out.printf("%-20s: ", "Alamat");             dataStringTmp[1][lengthOfTmpDatas-1] = in.nextLine();
                         System.out.printf("%-20s: ", "Kategori Karyawan");  dataStringTmp[2][lengthOfTmpDatas-1] = in.nextLine();
@@ -59,9 +61,14 @@ public class Travel12 {
                         System.out.printf("%-20s: ", "Jenis Kelamin");      dataCharTmp[lengthOfTmpDatas-1] = in.next().charAt(0);
                         in.nextLine();
                         lengthOfTmpDatas++;
+                        inputAgainisValid = false;
 
-                        System.out.print("\nInput Lagi? (YA/TIDAK): "); String yesOrNo = in.nextLine();
-                        inputAgain = (yesOrNo.equalsIgnoreCase("YA")) ? false : true;
+                        while (!inputAgainisValid) {
+                            System.out.print("\nInput Lagi? (YA/TIDAK): "); String yesOrNo = in.nextLine();
+                            if (yesOrNo.equalsIgnoreCase("YA")) {inputAgainisValid = true; inputAgain = false;}
+                            else if (yesOrNo.equalsIgnoreCase("TIDAK")) {inputAgainisValid = true; inputAgain = true;}
+                            else System.out.println("Input tidak valid.");
+                        }
                         
                         
                         //data asli

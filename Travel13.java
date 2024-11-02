@@ -17,12 +17,15 @@ public class Travel13 {
         double netSalary = 0;
         boolean stop = false, inputAgain = false;
 
+        System.out.println("\nSELAMAT DATANG DI APLIKASI FILKOM TOUR AND TRAVEL");
+        System.out.println("Hitung Gaji Bersih Karyawan");
+
         while (!stop) {
-            System.out.println("DAFTAR GAJI POKOK");
+            System.out.println("\nDAFTAR GAJI POKOK");
             System.out.printf("%-15s : 1.500.000\n", "Supir Travel");
             System.out.printf("%-15s : 1.750.000\n", "Supir Rent Car");
             System.out.printf("%-15s : 2.000.000\n", "Admin");
-            System.out.println("==========================================================");
+            System.out.println("===============================");
             System.out.println("Menu");
             System.out.println("1. Hitung Gaji");
             System.out.println("0. Keluar");
