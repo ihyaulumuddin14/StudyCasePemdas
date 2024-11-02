@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class TravelSewa {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-
         int maxTransaksi = 10; // Batas maksimum transaksi
         int[] nomorTransaksi = new int[maxTransaksi];
         String[] jenisLayanan = new String[maxTransaksi];
@@ -20,7 +19,6 @@ public class TravelSewa {
             "Tulungagung - Malang"
         };
         int[] harga = {100000, 200000, 250000, 175000, 125000};
-
         while (ulang) {
             System.out.println("\nSelamat datang di Filkom Tour and Travel");
             System.out.println("Pilih layanan yang Anda inginkan:");
@@ -29,8 +27,11 @@ public class TravelSewa {
             System.out.println("3. Tampilkan Struk dan Selesai");
             System.out.print("Masukkan pilihan Anda (1, 2, atau 3): ");
             int pilihan = scan.nextInt();
-
-            if (pilihan == 1 && transaksiIndex < maxTransaksi) {
+            if (pilihan == 1) {
+                if (transaksiIndex >= maxTransaksi) {
+                    System.out.println("Jumlah maksimum transaksi telah tercapai.");
+                    continue;
+                }
                 System.out.println("Pilih rute perjalanan:");
                 for (int i = 0; i < rute.length; i++) {
                     System.out.println((i + 1) + ". " + rute[i]);
@@ -54,8 +55,11 @@ public class TravelSewa {
                     System.out.printf("%-5d %-15s %-20s Rp %-12d\n", transaksiCounter - 1, "Travel", rute[rutePilihan - 1], hargaTravel);
                     System.out.println("=======================================================");
                 }
-
-            } else if (pilihan == 2 && transaksiIndex < maxTransaksi) {
+            } else if (pilihan == 2) {
+                if (transaksiIndex >= maxTransaksi) {
+                    System.out.println("Jumlah maksimum transaksi telah tercapai.");
+                    continue;
+                }
                 System.out.print("Masukkan lama sewa dalam jam: ");
                 int sewaJam = scan.nextInt();
                 int hargaRental;
@@ -79,7 +83,6 @@ public class TravelSewa {
                 System.out.println("-------------------------------------------------------");
                 System.out.printf("%-5d %-15s %-20s Rp %-12d\n", transaksiCounter - 1, "Sewa Mobil", sewaJam + " jam", hargaTotal);
                 System.out.println("=======================================================");
-
             } else if (pilihan == 3) {
                 System.out.print("=======================================================\n");
                 System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
@@ -103,8 +106,6 @@ public class TravelSewa {
                 System.out.println("=======================================================");
                 System.out.println("\nTerima kasih telah menggunakan layanan Filkom Tour and Travel!");
                 ulang = false; 
-            } else if (pilihan != 3) {
-                System.out.println("Maaf, jumlah maksimum transaksi telah tercapai.");
             } else {
                 System.out.println("Pilihan tidak valid. Silakan pilih 1, 2, atau 3.");
             }
