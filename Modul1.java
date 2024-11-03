@@ -5,7 +5,7 @@ public class Modul1 {
     public static void main(String[] args) {
         
         Scanner in = new Scanner(System.in);
-        String[][] dataString = new String[5][0];
+        String[][] dataString = new String[7][0];
         long[][] dataLong = new long[2][0];
         char[] dataChar = new char[0];
         int n, panjangDataTmp = 1;
@@ -19,7 +19,7 @@ public class Modul1 {
             {20000, 45000, 40000}, // bayaran lembur per jam
             {5/100.0, 6/100.0, 7/100.0} // pajak
         };
-
+        
         System.out.println("\nSELAMAT DATANG DI APLIKASI FILKOM TOUR AND TRAVEL");
         System.out.println("Manajemen Karyawan dan Penghitungan Gaji");
 
@@ -36,7 +36,7 @@ public class Modul1 {
             switch (n) {
                 case 1 -> {
                     while (!inputLagi) {
-                        String[][] dataStringTmp = new String[5][panjangDataTmp];
+                        String[][] dataStringTmp = new String[7][panjangDataTmp];
                         long[][] dataLongTmp = new long[2][panjangDataTmp];
                         char[] dataCharTmp = new char[panjangDataTmp];
 
@@ -60,11 +60,13 @@ public class Modul1 {
                         System.out.printf("%-20s: ", "Kategori Karyawan");  dataStringTmp[2][panjangDataTmp-1] = in.nextLine();
                         System.out.printf("%-20s: ", "Shift");              dataStringTmp[3][panjangDataTmp-1] = in.nextLine();
                         System.out.printf("%-20s: ", "Nama Bank");          dataStringTmp[4][panjangDataTmp-1] = in.nextLine();
+                        System.out.printf("%-20s: ", "Username");           dataStringTmp[5][panjangDataTmp-1] = in.nextLine();
+                        System.out.printf("%-20s: ", "Password");           dataStringTmp[6][panjangDataTmp-1] = in.nextLine();
                         System.out.printf("%-20s: ", "No. Telepon");        dataLongTmp[0][panjangDataTmp-1] = in.nextLong();
                         System.out.printf("%-20s: ", "No. Rekening");       dataLongTmp[1][panjangDataTmp-1] = in.nextLong();
                         System.out.printf("%-20s: ", "Jenis Kelamin");      dataCharTmp[panjangDataTmp-1] = in.next().charAt(0);
                         in.nextLine();
-
+                        
                         System.out.println("Karyawan Berhasil Ditambahkan");
 
                         panjangDataTmp++;
@@ -98,55 +100,39 @@ public class Modul1 {
                         }
                         for (int i = 0; i < dataChar.length; i++) {
                             dataChar[i] = dataCharTmp[i];
-                        }
+                        }    
                     }
                     inputLagi = false;
                 }
                 case 2 -> tampilNama(dataString, dataLong, dataChar);
                 case 3 -> {
+                    System.out.print("Masukkan Username: ");
+                    String username = in.nextLine();
+                    System.out.print("Masukkan Password: ");
+                    String password = in.nextLine();
 
-                    if (dataChar.length > 0) {
-                        System.out.println("DAFTAR GAJI POKOK:");
-                        System.out.println("- Supir Travel   : Rp. 1.500.000");
-                        System.out.println("- Supir Rent Car : Rp. 1.750.000");
-                        System.out.println("- Admin          : Rp. 2.000.000");
-                        System.out.println("=========================================");
-                        System.out.printf("%-20s: ", "Nama Karyawan"); String name = in.nextLine();
-                        System.out.printf("%-20s: ", "Kategori"); String kategori = in.nextLine();
-                        int indeksKaryawan = cariKaryawan(name, dataString, kategori, daftarKategori);
-                        
-                        if (indeksKaryawan == -1) {
-    
-                            System.out.println("Karyawan tidak ditemukan.");
-    
-                        } else {
-                            inputLagiBenar = false;
-                            while (!inputLagiBenar) {
-                                System.out.printf("%-20s: ", "Gaji Pokok"); int gajiPokok = in.nextInt();
-                                for (int i = 0; i < bahanPerhitunganGaji[0].length; i++) {
-                                    if (gajiPokok == bahanPerhitunganGaji[0][indeksKaryawan]) {
-                                        inputLagiBenar = true;
-                                    }
-                                }
-                                if (inputLagiBenar == false) System.out.println("Gaji Pokok tidak sesuai dengan kategori.\n");
-                            } inputLagiBenar = false; 
-                            
-                            System.out.printf("%-20s: ", "Jam Lembur"); int jamLembur = in.nextInt();
-    
-                            double gajiPokok = bahanPerhitunganGaji[0][indeksKaryawan];
-                            double upahLembur = bahanPerhitunganGaji[1][indeksKaryawan] * jamLembur;
-                            double pajak = bahanPerhitunganGaji[2][indeksKaryawan];
-                            double gajiBersih = (gajiPokok + upahLembur) - ((gajiPokok + upahLembur) * pajak);
-    
-                            System.out.printf("%-20s: %.0f%s\n", "Pajak", (pajak*100), "%");
-    
-                            tampilGaji(gajiBersih, name);
-    
-                            }
+                    int indeksKaryawan = validasiLogin(username, password, dataString);
+                    if (indeksKaryawan == -1) {
+                        System.out.println("Username atau Password salah.");
+                    } else {
+                        String kategori = dataString[2][indeksKaryawan];
+                        double gajiPokok = bahanPerhitunganGaji[0][indeksKaryawan];
+                        double upahLembur = bahanPerhitunganGaji[1][indeksKaryawan];
+                        double pajak = bahanPerhitunganGaji[2][indeksKaryawan];
 
-                    } else System.out.println("Karyawan Kosong!\n");
+                        System.out.printf("Kategori Karyawan: %s\n", kategori);
+                        System.out.printf("Gaji Pokok: Rp.%.0f\n", gajiPokok);
+                        System.out.printf("Upah Lembur per Jam: Rp.%.0f\n", upahLembur);
+                        System.out.printf("Pajak: %.0f%%\n", pajak * 100);
 
+                        System.out.print("Masukkan Jumlah Jam Lembur: ");
+                        int jamLembur = in.nextInt();
+
+                        double gajiBersih = (gajiPokok + upahLembur * jamLembur) * (1 - pajak);
+                        System.out.printf("Gaji Bersih: Rp.%.0f\n", gajiBersih);
                     }
+                        
+                }
                 case 0 -> berhenti = true;
                 default -> System.out.println("Tidak terdeteksi, silakan input lagi..");
             }
@@ -242,7 +228,16 @@ public class Modul1 {
             System.out.println("+=========================================+");
         }
     }
-    
+
+        public static int validasiLogin(String username, String password, String[][] dataString) {
+        for (int i = 0; i < dataString[0].length; i++) {
+            if (dataString[5][i].equals(username) && dataString[6][i].equals(password)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public static int cariKaryawan(String name, String[][] dataString, String kategori, String[] daftarKategori) {
         for (int i = 0; i < dataString[0].length; i++) {
             if (dataString[0][i].equalsIgnoreCase(name)) {
