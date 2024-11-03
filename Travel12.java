@@ -4,13 +4,13 @@ import java.util.Scanner;
 public class Travel12 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        String[][] dataString = new String[5][0];
+        long[][] dataLong = new long[2][0];
+        char[] dataChar = new char[0];
         int n, lengthOfTmpDatas = 1;
         boolean stop = false;
         boolean inputAgain = false;
         boolean inputAgainisValid = false;
-        String[][] dataString = new String[5][0];
-        long[][] dataLong = new long[2][0];
-        char[] dataChar = new char[0];
 
         System.out.println("\nSELAMAT DATANG DI APLIKASI FILKOM TOUR AND TRAVEL");
         System.out.println("Manajemen Karyawan");
