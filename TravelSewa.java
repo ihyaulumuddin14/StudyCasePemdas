@@ -19,6 +19,7 @@ public class TravelSewa {
             "Tulungagung - Malang"
         };
         int[] harga = {100000, 200000, 250000, 175000, 125000};
+        
         while (ulang) {
             System.out.println("\nSelamat datang di Filkom Tour and Travel");
             System.out.println("Pilih layanan yang Anda inginkan:");
@@ -27,6 +28,7 @@ public class TravelSewa {
             System.out.println("3. Tampilkan Struk dan Selesai");
             System.out.print("Masukkan pilihan Anda (1, 2, atau 3): ");
             int pilihan = scan.nextInt();
+            
             if (pilihan == 1) {
                 if (transaksiIndex >= maxTransaksi) {
                     System.out.println("Jumlah maksimum transaksi telah tercapai.");
@@ -49,11 +51,7 @@ public class TravelSewa {
                     detailLayanan[transaksiIndex] = rute[rutePilihan - 1];
                     jumlahTagihan[transaksiIndex] = hargaTravel;
                     transaksiIndex++;
-                    System.out.print("=======================================================\n");
-                    System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
-                    System.out.println("-------------------------------------------------------");
-                    System.out.printf("%-5d %-15s %-20s Rp %-12d\n", transaksiCounter - 1, "Travel", rute[rutePilihan - 1], hargaTravel);
-                    System.out.println("=======================================================");
+                    struk(nomorTransaksi[transaksiIndex - 1], "Travel", rute[rutePilihan - 1], hargaTravel);
                 }
             } else if (pilihan == 2) {
                 if (transaksiIndex >= maxTransaksi) {
@@ -78,37 +76,45 @@ public class TravelSewa {
                 detailLayanan[transaksiIndex] = sewaJam + " jam";
                 jumlahTagihan[transaksiIndex] = hargaTotal;
                 transaksiIndex++;
-                System.out.print("=======================================================\n");
-                System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
-                System.out.println("-------------------------------------------------------");
-                System.out.printf("%-5d %-15s %-20s Rp %-12d\n", transaksiCounter - 1, "Sewa Mobil", sewaJam + " jam", hargaTotal);
-                System.out.println("=======================================================");
+                struk(nomorTransaksi[transaksiIndex - 1], "Sewa Mobil", sewaJam + " jam", hargaTotal);
             } else if (pilihan == 3) {
-                System.out.print("=======================================================\n");
-                System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
-                System.out.println("-------------------------------------------------------");
-                int totalTagihan = 0;
-                double diskon = 0.0;
-                for (int i = 0; i < transaksiIndex; i++) {
-                    System.out.printf("%-5d %-15s %-20s Rp %-12d\n", nomorTransaksi[i], jenisLayanan[i], detailLayanan[i], jumlahTagihan[i]);
-                    totalTagihan += jumlahTagihan[i];
-                }
-                int subtotal = totalTagihan;
-                System.out.println("-------------------------------------------------------");
-                System.out.printf("%-42s Rp %-12d\n", "Subtotal:", subtotal);
-                //Jika transaksi lebih dari 3 mendapatkan diskon
-                if (transaksiIndex > 3) {
-                    diskon = subtotal * 0.05; 
-                    totalTagihan -= diskon;
-                    System.out.printf("%-42s Rp %-12.0f\n", "Diskon 5%:", diskon);
-                }
-                System.out.printf("%-42s Rp %-12d\n", "Total Tagihan:", totalTagihan);
-                System.out.println("=======================================================");
-                System.out.println("\nTerima kasih telah menggunakan layanan Filkom Tour and Travel!");
+                strukKeseluruhan(nomorTransaksi, jenisLayanan, detailLayanan, jumlahTagihan, transaksiIndex);
                 ulang = false; 
             } else {
                 System.out.println("Pilihan tidak valid. Silakan pilih 1, 2, atau 3.");
             }
         }
+    }
+
+    public static void struk(int nomor, String layanan, String detail, int tagihan) {
+        System.out.print("=======================================================\n");
+        System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
+        System.out.println("-------------------------------------------------------");
+        System.out.printf("%-5d %-15s %-20s Rp %-12d\n", nomor, layanan, detail, tagihan);
+        System.out.println("=======================================================");
+    }
+
+    public static void strukKeseluruhan(int[] nomorTransaksi, String[] jenisLayanan, String[] detailLayanan, int[] jumlahTagihan, int transaksiIndex) {
+        System.out.print("=======================================================\n");
+        System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
+        System.out.println("-------------------------------------------------------");
+        int totalTagihan = 0;
+        double diskon = 0.0;
+        for (int i = 0; i < transaksiIndex; i++) {
+            System.out.printf("%-5d %-15s %-20s Rp %-12d\n", nomorTransaksi[i], jenisLayanan[i], detailLayanan[i], jumlahTagihan[i]);
+            totalTagihan += jumlahTagihan[i];
+        }
+        int subtotal = totalTagihan;
+        System.out.println("-------------------------------------------------------");
+        System.out.printf("%-42s Rp %-12d\n", "Subtotal:", subtotal);
+        // Diskon jika transaksi lebih dari 3
+        if (transaksiIndex > 3) {
+            diskon = subtotal * 0.05; 
+            totalTagihan -= diskon;
+            System.out.printf("%-42s Rp %-12.0f\n", "Diskon 5%:", diskon);
+        }
+        System.out.printf("%-42s Rp %-12d\n", "Total Tagihan:", totalTagihan);
+        System.out.println("=======================================================");
+        System.out.println("\nTerima kasih telah menggunakan layanan Filkom Tour and Travel!");
     }
 }
