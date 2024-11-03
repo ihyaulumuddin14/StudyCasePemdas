@@ -46,30 +46,39 @@ public class Modul2 {
                     System.out.print("Masukkan pilihan: ");
                     int jenis = in.nextInt();
                     in.nextLine();
-
                     if (jenis == 1) {
                         tmpjenisMobil[panjangArray - 1] = "Regular";
                         tmphorsePower[panjangArray - 1] = 0;
-                        System.out.printf("%-15s: ","Plat nomor?"); tmpnoPlat[panjangArray-1] = in.nextLine();
-                        System.out.printf("%-15s: ","Merk mobil?"); tmpmerkMobil[panjangArray-1] = in.nextLine();
-                        System.out.printf("%-15s: ","Warna mobil?"); tmpwarnaMobil[panjangArray-1] = in.nextLine();
-                        System.out.printf("%-15s: ","Tahun keluaran?"); tmpTahunkeluaran[panjangArray-1] = in.nextShort();
+                        System.out.printf("%-15s: ", "Plat nomor?"); 
+                        tmpnoPlat[panjangArray-1] = in.nextLine();
+                        System.out.printf("%-15s: ", "Merk mobil?"); 
+                        tmpmerkMobil[panjangArray-1] = in.nextLine();
+                        System.out.printf("%-15s: ", "Warna mobil?"); 
+                        tmpwarnaMobil[panjangArray-1] = in.nextLine();
+                        System.out.printf("%-15s: ", "Tahun keluaran?"); 
+                        tmpTahunkeluaran[panjangArray-1] = in.nextShort();
                         in.nextLine();
-                        panjangArray++;
-                        input = true;
                     } else if (jenis == 2) {
                         tmpjenisMobil[panjangArray - 1] = "Supercar";
-                        System.out.printf("%-15s: ","Plat nomor?"); tmpnoPlat[panjangArray-1] = in.nextLine();
-                        System.out.printf("%-15s: ","Merk mobil?"); tmpmerkMobil[panjangArray-1] = in.nextLine();
-                        System.out.printf("%-15s: ","Warna mobil?"); tmpwarnaMobil[panjangArray-1] = in.nextLine();
-                        System.out.printf("%-15s: ","Tahun keluaran?"); tmpTahunkeluaran[panjangArray-1] = in.nextShort();
+                        System.out.printf("%-15s: ", "Plat nomor?"); 
+                        tmpnoPlat[panjangArray-1] = in.nextLine();
+                        System.out.printf("%-15s: ", "Merk mobil?"); 
+                        tmpmerkMobil[panjangArray-1] = in.nextLine();
+                        System.out.printf("%-15s: ", "Warna mobil?"); 
+                        tmpwarnaMobil[panjangArray-1] = in.nextLine();
+                        System.out.printf("%-15s: ", "Tahun keluaran?"); 
+                        tmpTahunkeluaran[panjangArray-1] = in.nextShort();
                         in.nextLine();
-                        System.out.printf("%-15s: ", "Horse Power?");
+                        System.out.printf("%-15s: ", "Horse Power?"); 
                         tmphorsePower[panjangArray - 1] = in.nextInt();
                         in.nextLine();
-                        panjangArray++;
-                        input = true;
-                    }    
+                    }
+                    
+                    // Naikkan panjangArray setelah data berhasil ditambahkan
+                    panjangArray++;
+                    
+                    panjangArray++;
+                    input = true;
                 
                 
                         while (input) {
@@ -152,7 +161,11 @@ public class Modul2 {
                     detailLayanan[transaksiIndex] = rute[rutepil - 1];
                     jumlahTagihan[transaksiIndex] = hargaTravel;
                     transaksiIndex++;
-                    struk(nomorTransaksi[transaksiIndex - 1], "Travel", rute[rutePilihan - 1], hargaTravel);
+                    System.out.print("=======================================================\n");
+                    System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
+                    System.out.println("-------------------------------------------------------");
+                    System.out.printf("%-5d %-15s %-20s Rp %-12d\n", transaksiCounter - 1, "Travel", rute[rutepil - 1], hargaTravel);
+                    System.out.println("=======================================================");
                 }
             } else if (pil == 2) {
                 if (transaksiIndex >= maxTransaksi) {
@@ -177,9 +190,33 @@ public class Modul2 {
                 detailLayanan[transaksiIndex] = sewaJam + " jam";
                 jumlahTagihan[transaksiIndex] = hargaTotal;
                 transaksiIndex++;
-                struk(nomorTransaksi[transaksiIndex - 1], "Sewa Mobil", sewaJam + " jam", hargaTotal);
+                System.out.print("=======================================================\n");
+                System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
+                System.out.println("-------------------------------------------------------");
+                System.out.printf("%-5d %-15s %-20s Rp %-12d\n", transaksiCounter - 1, "Sewa Mobil", sewaJam + " jam", hargaTotal);
+                System.out.println("=======================================================");
             } else if (pil == 3) {
-                strukKeseluruhan(nomorTransaksi, jenisLayanan, detailLayanan, jumlahTagihan, transaksiIndex);
+                System.out.print("=======================================================\n");
+                System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
+                System.out.println("-------------------------------------------------------");
+                int totalTagihan = 0;
+                double diskon = 0.0;
+                for (int i = 0; i < transaksiIndex; i++) {
+                    System.out.printf("%-5d %-15s %-20s Rp %-12d\n", nomorTransaksi[i], jenisLayanan[i], detailLayanan[i], jumlahTagihan[i]);
+                    totalTagihan += jumlahTagihan[i];
+                }
+                int subtotal = totalTagihan;
+                System.out.println("-------------------------------------------------------");
+                System.out.printf("%-42s Rp %-12d\n", "Subtotal:", subtotal);
+                //Jika transaksi lebih dari 3 mendapatkan diskon
+                if (transaksiIndex > 3) {
+                    diskon = subtotal * 0.05; 
+                    totalTagihan -= diskon;
+                    System.out.printf("%-42s Rp %-12.0f\n", "Diskon 5%:", diskon);
+                }
+                System.out.printf("%-42s Rp %-12d\n", "Total Tagihan:", totalTagihan);
+                System.out.println("=======================================================");
+                System.out.println("\nTerima kasih telah menggunakan layanan Filkom Tour and Travel!");
                 ulang = false; 
             } else {
                 System.out.println("Pilihan tidak valid. Silakan pilih 1, 2, atau 3.");
@@ -187,38 +224,6 @@ public class Modul2 {
         }
         }
     }
-    public static void struk(int nomor, String layanan, String detail, int tagihan) {
-        System.out.print("=======================================================\n");
-        System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
-        System.out.println("-------------------------------------------------------");
-        System.out.printf("%-5d %-15s %-20s Rp %-12d\n", nomor, layanan, detail, tagihan);
-        System.out.println("=======================================================");
-    }
-    
-    public static void strukKeseluruhan(int[] nomorTransaksi, String[] jenisLayanan, String[] detailLayanan, int[] jumlahTagihan, int transaksiIndex) {
-        System.out.print("=======================================================\n");
-        System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
-        System.out.println("-------------------------------------------------------");
-        int totalTagihan = 0;
-        double diskon = 0.0;
-        for (int i = 0; i < transaksiIndex; i++) {
-            System.out.printf("%-5d %-15s %-20s Rp %-12d\n", nomorTransaksi[i], jenisLayanan[i], detailLayanan[i], jumlahTagihan[i]);
-            totalTagihan += jumlahTagihan[i];
-        }
-        int subtotal = totalTagihan;
-        System.out.println("-------------------------------------------------------");
-        System.out.printf("%-42s Rp %-12d\n", "Subtotal:", subtotal);
-        // Diskon jika transaksi lebih dari 3
-        if (transaksiIndex > 3) {
-            diskon = subtotal * 0.05; 
-            totalTagihan -= diskon;
-            System.out.printf("%-42s Rp %-12.0f\n", "Diskon 5%:", diskon);
-        }
-        System.out.printf("%-42s Rp %-12d\n", "Total Tagihan:", totalTagihan);
-        System.out.println("=======================================================");
-        System.out.println("\nTerima kasih telah menggunakan layanan Filkom Tour and Travel!");
-    }
-    
     public static void lihatData(String noPlat[], String merkMobil[], String warnaMobil[], short tahunKeluaran[], String jenisMobil[], int horsePower[]) {
         for (int i = 0; i < noPlat.length; i++) {
             System.out.println("MOBIL " + (i + 1));
