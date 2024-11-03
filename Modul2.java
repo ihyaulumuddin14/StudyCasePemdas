@@ -126,7 +126,6 @@ public class Modul2 {
                         System.out.println("Jumlah maksimum transaksi telah tercapai.");
                         continue;
                     }
-                    System.out.println("Pilih rute perjalanan:");
                     for (int i = 0; i < rute.length; i++) {
                         System.out.println((i + 1) + ". " + rute[i]);
                     }
@@ -208,9 +207,9 @@ public class Modul2 {
         for (int i = 0; i < panjangArray; i++) {
             System.out.printf("%-5d %-15s %-15s %-15s %-15d %-15s", (i + 1), noPlat[i], merkMobil[i], warnaMobil[i], tahunkeluaran[i], jenisMobil[i]);
             if (jenisMobil[i].equals("Supercar")) {
-                System.out.printf(" %-15d\n", horsePower[i]);
+                System.out.printf("%-15d\n", horsePower[i]);
             } else {
-                System.out.println();
+                System.out.printf("%-15c\n", ' - ');
             }
         }
         System.out.println("=================================================================================================");
