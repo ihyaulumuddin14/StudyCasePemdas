@@ -126,6 +126,7 @@ public class Modul2 {
                         System.out.println("Jumlah maksimum transaksi telah tercapai.");
                         continue;
                     }
+                    System.out.println("Pilih rute perjalanan:");
                     for (int i = 0; i < rute.length; i++) {
                         System.out.println((i + 1) + ". " + rute[i]);
                     }
