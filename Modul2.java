@@ -84,13 +84,7 @@ public class Modul2 {
                     horsePower = tmphorsePower;
                     panjangArray++;
                 }
-                case 2 -> {
-                    if (panjangArray == 0) {
-                    System.out.println("Belum ada transaksi untuk ditampilkan.");
-                    } else {
-                        lihatData(noPlat, merkMobil, warnaMobil, tahunkeluaran, jenisMobil, horsePower, panjangArray);
-                    } 
-                }
+                case 2 -> lihatData(noPlat, merkMobil, warnaMobil, tahunkeluaran, jenisMobil, horsePower, panjangArray);
                 case 0 -> {
                     run = false;
                     System.out.println("Anda telah menyelesaikan penginputan data mobil.");
@@ -190,15 +184,10 @@ public class Modul2 {
                         struk("Sewa Mobil", detailLayanan[transaksiIndex - 1], hargaTotal);
                     }
                 }
-                case 3 -> {
-                    if (transaksiIndex == 0) {
-                        System.out.println("Belum ada transaksi untuk ditampilkan.");
-                    } else {
-                        strukKeseluruhan(nomorTransaksi, jenisLayanan, detailLayanan, jumlahTagihan, transaksiIndex);
-                    }
-                }
+                case 3 -> strukKeseluruhan(nomorTransaksi, jenisLayanan, detailLayanan, jumlahTagihan, transaksiIndex);
                 case 0 -> {
                     run = false; 
+                    System.out.println("Terima kasih telah menggunakan layanan Filkom Tour and Travel!");
                 }
                 default -> System.out.println("Pilihan tidak valid.");
             }
@@ -210,7 +199,6 @@ public class Modul2 {
         System.out.println("=================================================================================================");
         System.out.printf("%-5s %-15s %-15s %-15s %-15s %-15s %-15s\n", "No", "Plat No", "Merk", "Warna", "Tahun", "Jenis", "Horse Power");
         System.out.println("-------------------------------------------------------------------------------------------------");
-        
         for (int i = 0; i < panjangArray; i++) {
             System.out.printf("%-5d %-15s %-15s %-15s %-15d %-15s", (i + 1), noPlat[i], merkMobil[i], warnaMobil[i], tahunkeluaran[i], jenisMobil[i]);
             if (jenisMobil[i].equals("Supercar")) {
