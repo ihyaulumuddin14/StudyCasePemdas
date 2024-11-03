@@ -73,10 +73,6 @@ public class Modul2 {
                         tmphorsePower[panjangArray - 1] = in.nextInt();
                         in.nextLine();
                     }
-                    
-                    // Naikkan panjangArray setelah data berhasil ditambahkan
-                    panjangArray++;
-                    
                     panjangArray++;
                     input = true;
                 
