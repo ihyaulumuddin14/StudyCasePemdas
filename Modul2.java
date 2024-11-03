@@ -6,7 +6,7 @@ public class Modul2 {
         boolean run = true;
 
         // Data mobil
-        int panjangArray = 0; // mulai dengan 0
+        int panjangArray = 0;
         String[] noPlat = new String[0];
         String[] merkMobil = new String[0];
         String[] warnaMobil = new String[0];
@@ -143,7 +143,7 @@ public class Modul2 {
                         detailLayanan[transaksiIndex] = rute[rutePilihan - 1];
                         jumlahTagihan[transaksiIndex] = hargaTravel;
                         transaksiIndex++;
-                        struk(nomorTransaksi[transaksiIndex - 1], "Travel", rute[rutePilihan - 1], hargaTravel);
+                        struk("Travel", rute[rutePilihan - 1], hargaTravel);
                     }
                 }
                 case 2 -> {
@@ -178,10 +178,10 @@ public class Modul2 {
                         // Simpan transaksi
                         nomorTransaksi[transaksiIndex] = transaksiCounter++;
                         jenisLayanan[transaksiIndex] = "Sewa Mobil";
-                        detailLayanan[transaksiIndex] = merkMobil[mobilPilihan] + " (" + noPlat[mobilPilihan] + ") - " + sewaJam + " jam";
+                        detailLayanan[transaksiIndex] = merkMobil[mobilPilihan] + " - " + sewaJam + " jam";
                         jumlahTagihan[transaksiIndex] = hargaTotal;
                         transaksiIndex++;
-                        struk(nomorTransaksi[transaksiIndex - 1], "Sewa Mobil", detailLayanan[transaksiIndex - 1], hargaTotal);
+                        struk("Sewa Mobil", detailLayanan[transaksiIndex - 1], hargaTotal);
                     }
                 }
                 case 3 -> {
@@ -200,22 +200,28 @@ public class Modul2 {
         in.close();
     }
 
-    public static void lihatData(String[] noPlat, String[] merkMobil, String[] warnaMobil,
-                                  short[] tahunkeluaran, String[] jenisMobil, int[] horsePower, int panjangArray) {
-        System.out.println("Daftar Data Mobil:");
-        System.out.printf("%-15s %-15s %-15s %-15s %-15s %-15s\n", "Plat No", "Merk", "Warna", "Tahun", "Jenis", "Horse Power");
-        System.out.println("==============================================================");
+    public static void lihatData(String[] noPlat, String[] merkMobil, String[] warnaMobil, short[] tahunkeluaran, String[] jenisMobil, int[] horsePower, int panjangArray) {
+        System.out.println("Daftar Mobil:");
+        System.out.println("=================================================================================================");
+        System.out.printf("%-5s %-15s %-15s %-15s %-15s %-15s %-15s\n", "No", "Plat No", "Merk", "Warna", "Tahun", "Jenis", "Horse Power");
+        System.out.println("-------------------------------------------------------------------------------------------------");
         for (int i = 0; i < panjangArray; i++) {
-            System.out.printf("%-15s %-15s %-15s %-15d %-15s %-15d\n", noPlat[i], merkMobil[i], warnaMobil[i], tahunkeluaran[i], jenisMobil[i], horsePower[i]);
+            System.out.printf("%-5d %-15s %-15s %-15s %-15d %-15s", (i + 1), noPlat[i], merkMobil[i], warnaMobil[i], tahunkeluaran[i], jenisMobil[i]);
+            if (jenisMobil[i].equals("Supercar")) {
+                System.out.printf(" %-15d\n", horsePower[i]);
+            } else {
+                System.out.println();
+            }
         }
+        System.out.println("=================================================================================================");
     }
 
-    public static void struk(int nomor, String layanan, String detail, int tagihan) {
-        System.out.print("=======================================================\n");
-        System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
-        System.out.println("-------------------------------------------------------");
-        System.out.printf("%-5d %-15s %-20s Rp %-12d\n", nomor, layanan, detail, tagihan);
-        System.out.println("=======================================================");
+    public static void struk(String layanan, String detail, int tagihan) {
+        System.out.print("=================================================\n");
+        System.out.printf("%-15s %-20s %-15s\n", "Layanan", "Detail", "Tagihan (Rp)");
+        System.out.println("-------------------------------------------------");
+        System.out.printf("%-15s %-20s Rp %-12d\n", layanan, detail, tagihan);
+        System.out.println("=================================================");
     }
 
     public static void strukKeseluruhan(int[] nomorTransaksi, String[] jenisLayanan, String[] detailLayanan, int[] jumlahTagihan, int transaksiIndex) {
@@ -237,8 +243,8 @@ public class Modul2 {
 
         System.out.println("-------------------------------------------------------");
         System.out.printf("%-42s Rp %-12d\n", "Subtotal:", subtotal);
-        System.out.printf("%-42s Rp %-12.2f\n", "Diskon (5%):", diskon);
-        System.out.printf("%-42s Rp %-12.2f\n", "Total Tagihan:", totalTagihan);
+        System.out.printf("%-42s Rp %-12.0f\n", "Diskon (5%):", diskon);
+        System.out.printf("%-42s Rp %-12.0f\n", "Total Tagihan:", totalTagihan);
         System.out.println("=======================================================");
     }
 }
