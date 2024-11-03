@@ -194,6 +194,7 @@ public class Modul2 {
         System.out.printf("%-5d %-15s %-20s Rp %-12d\n", nomor, layanan, detail, tagihan);
         System.out.println("=======================================================");
     }
+    
     public static void strukKeseluruhan(int[] nomorTransaksi, String[] jenisLayanan, String[] detailLayanan, int[] jumlahTagihan, int transaksiIndex) {
         System.out.print("=======================================================\n");
         System.out.printf("%-5s %-15s %-20s %-15s\n", "No", "Layanan", "Detail", "Tagihan (Rp)");
@@ -217,7 +218,7 @@ public class Modul2 {
         System.out.println("=======================================================");
         System.out.println("\nTerima kasih telah menggunakan layanan Filkom Tour and Travel!");
     }
-}
+    
     public static void lihatData(String noPlat[], String merkMobil[], String warnaMobil[], short tahunKeluaran[], String jenisMobil[], int horsePower[]) {
         for (int i = 0; i < noPlat.length; i++) {
             System.out.println("MOBIL " + (i + 1));
