@@ -209,7 +209,7 @@ public class Modul2 {
             if (jenisMobil[i].equals("Supercar")) {
                 System.out.printf("%-15d\n", horsePower[i]);
             } else {
-                System.out.printf("%-15c\n", ' - ');
+                System.out.printf("%-15c\n", '-');
             }
         }
         System.out.println("=================================================================================================");
