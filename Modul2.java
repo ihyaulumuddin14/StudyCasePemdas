@@ -5,7 +5,6 @@ public class Modul2 {
         int pilihan;
         boolean run = true;
         boolean menuMobil = true;
-
         // Data mobil
         int panjangArray = 0;
         String[] noPlat = new String[0];
@@ -14,6 +13,22 @@ public class Modul2 {
         short[] tahunkeluaran = new short[0];
         String[] jenisMobil = new String[0];
         int[] horsePower = new int[0];
+
+        int maxTransaksi = 10; // Batas maksimum transaksi
+        int[] nomorTransaksi = new int[maxTransaksi];
+        String[] jenisLayanan = new String[maxTransaksi];
+        String[] detailLayanan = new String[maxTransaksi]; 
+        int[] jumlahTagihan = new int[maxTransaksi];
+        int transaksiCounter = 1;
+        int transaksiIndex = 0;
+        String[] rute = {
+            "Surabaya - Malang", 
+            "Madura - Malang", 
+            "Banyuwangi - Malang", 
+            "Situbondo - Malang", 
+            "Tulungagung - Malang"
+        };
+        int[] harga = {100000, 200000, 250000, 175000, 125000};
 
         while (run) 
             if (menuMobil) {
@@ -94,22 +109,6 @@ public class Modul2 {
                 default -> System.out.println("Pilihan tidak valid.");
             }
         } else {
-        int maxTransaksi = 10; // Batas maksimum transaksi
-        int[] nomorTransaksi = new int[maxTransaksi];
-        String[] jenisLayanan = new String[maxTransaksi];
-        String[] detailLayanan = new String[maxTransaksi]; 
-        int[] jumlahTagihan = new int[maxTransaksi];
-        int transaksiCounter = 1;
-        int transaksiIndex = 0;
-        String[] rute = {
-            "Surabaya - Malang", 
-            "Madura - Malang", 
-            "Banyuwangi - Malang", 
-            "Situbondo - Malang", 
-            "Tulungagung - Malang"
-        };
-        int[] harga = {100000, 200000, 250000, 175000, 125000};
-
             System.out.println("\nMenu Sewa dan Travel:");
             System.out.println("1. Travel");
             System.out.println("2. Sewa Mobil");
