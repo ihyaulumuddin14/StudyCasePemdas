@@ -5,7 +5,7 @@ public class Modul2 {
         Scanner in = new Scanner(System.in);
         int pilihan;
         boolean run = true;
-
+        boolean menuMobil = true;
         // Data mobil
         int panjangArray = 0;
         String[] noPlat = new String[0];
@@ -15,11 +15,28 @@ public class Modul2 {
         String[] jenisMobil = new String[0];
         int[] horsePower = new int[0];
 
-        while (run) {
+        int maxTransaksi = 10; // Batas maksimum transaksi
+        int[] nomorTransaksi = new int[maxTransaksi];
+        String[] jenisLayanan = new String[maxTransaksi];
+        String[] detailLayanan = new String[maxTransaksi]; 
+        int[] jumlahTagihan = new int[maxTransaksi];
+        int transaksiCounter = 1;
+        int transaksiIndex = 0;
+        String[] rute = {
+            "Surabaya - Malang", 
+            "Madura - Malang", 
+            "Banyuwangi - Malang", 
+            "Situbondo - Malang", 
+            "Tulungagung - Malang"
+        };
+        int[] harga = {100000, 200000, 250000, 175000, 125000};
+
+        while (run) 
+            if (menuMobil) {
             System.out.println("\nMenu Input Data Mobil:");
             System.out.println("1. Input Data Mobil");
             System.out.println("2. Lihat Data Mobil");
-            System.out.println("0. Selesai dan Lanjut ke Menu Sewa");
+            System.out.println("3. Lanjut ke Menu Travel dan Sewa");
             System.out.print("Masukkan menu pilihan: ");
             pilihan = in.nextInt();
             in.nextLine();
@@ -86,36 +103,18 @@ public class Modul2 {
                     panjangArray++;
                 }
                 case 2 -> lihatData(noPlat, merkMobil, warnaMobil, tahunkeluaran, jenisMobil, horsePower, panjangArray);
-                case 0 -> {
-                    run = false;
+                case 3 -> {
+                    menuMobil = false;
                     System.out.println("Anda telah menyelesaikan penginputan data mobil.");
                 }
                 default -> System.out.println("Pilihan tidak valid.");
             }
-        }
-
-        run = true; // Reset untuk menu selanjutnya
-        int maxTransaksi = 10; // Batas maksimum transaksi
-        int[] nomorTransaksi = new int[maxTransaksi];
-        String[] jenisLayanan = new String[maxTransaksi];
-        String[] detailLayanan = new String[maxTransaksi]; 
-        int[] jumlahTagihan = new int[maxTransaksi];
-        int transaksiCounter = 1;
-        int transaksiIndex = 0;
-        String[] rute = {
-            "Surabaya - Malang", 
-            "Madura - Malang", 
-            "Banyuwangi - Malang", 
-            "Situbondo - Malang", 
-            "Tulungagung - Malang"
-        };
-        int[] harga = {100000, 200000, 250000, 175000, 125000};
-
-        while (run) {
+        } else {
             System.out.println("\nMenu Sewa dan Travel:");
             System.out.println("1. Travel");
             System.out.println("2. Sewa Mobil");
             System.out.println("3. Tampilkan Struk Keseluruhan");
+            System.out.println("4. Kembali ke Menu Input Data Mobil");
             System.out.println("0. Keluar");
             System.out.print("Masukkan menu pilihan: ");
             pilihan = in.nextInt();
@@ -149,7 +148,7 @@ public class Modul2 {
                 }
                 case 2 -> {
                     if (panjangArray == 0) {
-                        System.out.println("Tidak ada mobil untuk disewa.");
+                        System.out.println("Tidak ada mobil untuk disewa. Silakan kembali ke menu input data mobil terlebih dahulu.");
                         continue;
                     }
 
@@ -186,6 +185,10 @@ public class Modul2 {
                     }
                 }
                 case 3 -> strukKeseluruhan(nomorTransaksi, jenisLayanan, detailLayanan, jumlahTagihan, transaksiIndex);
+<<<<<<< HEAD
+=======
+                case 4 -> menuMobil = true;
+>>>>>>> fcfeb38112a8395467f8eb63e004115894a9bef4
                 case 0 -> {
                     run = false; 
                     System.out.println("Terima kasih telah menggunakan layanan Filkom Tour and Travel!");
