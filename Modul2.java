@@ -185,10 +185,7 @@ public class Modul2 {
                     }
                 }
                 case 3 -> strukKeseluruhan(nomorTransaksi, jenisLayanan, detailLayanan, jumlahTagihan, transaksiIndex);
-<<<<<<< HEAD
-=======
                 case 4 -> menuMobil = true;
->>>>>>> fcfeb38112a8395467f8eb63e004115894a9bef4
                 case 0 -> {
                     run = false; 
                     System.out.println("Terima kasih telah menggunakan layanan Filkom Tour and Travel!");
