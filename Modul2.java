@@ -126,6 +126,9 @@ public class Modul2 {
                         System.out.println("Jumlah maksimum transaksi telah tercapai.");
                         continue;
                     }
+
+                    System.out.println("\n\nJika transaksi yang akan anda lakukan lebih 3, akan terdapat DISKON sebanyak 5%!!!");
+                    System.out.println("==================================================================================");
                     System.out.println("Pilih rute perjalanan:");
                     for (int i = 0; i < rute.length; i++) {
                         System.out.println((i + 1) + ". " + rute[i]);
@@ -152,6 +155,8 @@ public class Modul2 {
                         continue;
                     }
 
+                    System.out.println("\n\nJika transaksi yang akan anda lakukan lebih 3, akan terdapat DISKON sebanyak 5%!!!");
+                    System.out.println("==================================================================================");
                     System.out.println("Pilih mobil yang ingin disewa:");
                     for (int i = 0; i < panjangArray; i++) {
                         System.out.printf("%d. %s (%s) - %s\n", (i + 1), merkMobil[i], noPlat[i], jenisMobil[i]);
