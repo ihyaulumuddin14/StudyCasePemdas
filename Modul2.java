@@ -1,3 +1,4 @@
+package StudyCasePemdas;
 import java.util.Scanner;
 public class Modul2 {
     public static void main(String[] args) {
@@ -184,20 +185,14 @@ public class Modul2 {
                         struk("Sewa Mobil", detailLayanan[transaksiIndex - 1], hargaTotal);
                     }
                 }
-                case 3 -> {
-                    if (transaksiIndex == 0) {
-                        System.out.println("Belum ada transaksi untuk ditampilkan.");
-                    } else {
-                        strukKeseluruhan(nomorTransaksi, jenisLayanan, detailLayanan, jumlahTagihan, transaksiIndex);
-                    }
-                }
+                case 3 -> strukKeseluruhan(nomorTransaksi, jenisLayanan, detailLayanan, jumlahTagihan, transaksiIndex);
                 case 0 -> {
                     run = false; 
+                    System.out.println("Terima kasih telah menggunakan layanan Filkom Tour and Travel!");
                 }
                 default -> System.out.println("Pilihan tidak valid.");
             }
         }
-        in.close();
     }
 
     public static void lihatData(String[] noPlat, String[] merkMobil, String[] warnaMobil, short[] tahunkeluaran, String[] jenisMobil, int[] horsePower, int panjangArray) {
@@ -210,7 +205,7 @@ public class Modul2 {
             if (jenisMobil[i].equals("Supercar")) {
                 System.out.printf(" %-15d\n", horsePower[i]);
             } else {
-                System.out.println();
+                System.out.printf(" %c\n", '-');
             }
         }
         System.out.println("=================================================================================================");
