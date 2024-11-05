@@ -72,17 +72,7 @@ public class Modul1 {
                         panjangDataTmp++;
                         inputLagiBenar = false;
 
-                        while (!inputLagiBenar) {
-                            System.out.print("\nInput Lagi? (YA/TIDAK): ");
-                            String yesOrNo = in.nextLine();
-                            if (yesOrNo.equalsIgnoreCase("YA")) {
-                                inputLagiBenar = true;
-                                inputLagi = false;
-                            } else if (yesOrNo.equalsIgnoreCase("TIDAK")) {
-                                inputLagiBenar = true;
-                                inputLagi = true;
-                            } else System.out.println("Input tidak valid.");
-                        }
+                        
 
                         dataString = new String[5][panjangDataTmp-1];
                         dataLong = new long[2][panjangDataTmp-1];
@@ -100,7 +90,18 @@ public class Modul1 {
                         }
                         for (int i = 0; i < dataChar.length; i++) {
                             dataChar[i] = dataCharTmp[i];
-                        }    
+                        }   
+                        while (!inputLagiBenar) {
+                            System.out.print("\nInput Lagi? (YA/TIDAK): ");
+                            String yesOrNo = in.nextLine();
+                            if (yesOrNo.equalsIgnoreCase("YA")) {
+                                inputLagiBenar = true;
+                                inputLagi = false;
+                            } else if (yesOrNo.equalsIgnoreCase("TIDAK")) {
+                                inputLagiBenar = true;
+                                inputLagi = true;
+                            } else System.out.println("Input tidak valid.");
+                        } 
                     }
                     inputLagi = false;
                 }
