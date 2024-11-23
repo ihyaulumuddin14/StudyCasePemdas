@@ -1,14 +1,12 @@
 package StudyCasePemdas;
 import java.util.Scanner;
-public class Modul2 {
+public class Modul2copy {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        InputDataMobil dataMobil = new InputDataMobil();
-        InputDataSewaDanTravel transaksi = new InputDataSewaDanTravel();
-
+        PengelolaanMobil kelolaMobil = new PengelolaanMobil();
+        Transaksi transaksi = new Transaksi();
         boolean menuMobil = true;
         boolean run = true;
-
 
         while (run) {
             if (menuMobil) {
@@ -21,18 +19,21 @@ public class Modul2 {
                 in.nextLine();
                 
                 switch (pilihan) {
-                    case 1:
-                        dataMobil.tambahMobil(in);
-                        break;
-                    case 2:
-                        dataMobil.lihatData();
-                        break;
-                    case 3:
+                    case 1 -> {
+                        System.out.println("Pilih jenis mobil:");
+                        System.out.println("1. Regular");
+                        System.out.println("2. Supercar");
+                        System.out.print("Masukkan pilihan: ");
+                        int jenis = in.nextInt();
+                        in.nextLine();
+                        kelolaMobil.tambahMobil(in, jenis);
+                    }
+                    case 2 -> kelolaMobil.lihatData();
+                    case 3 -> {
                         menuMobil = false;
                         System.out.println("Anda telah menyelesaikan penginputan data mobil.");
-                        break;
-                    default:
-                        System.out.println("Pilihan tidak valid.");
+                    }
+                    default -> System.out.println("Pilihan tidak valid.");
                 }
                 
             } else {
@@ -47,24 +48,15 @@ public class Modul2 {
                 in.nextLine();
 
                 switch (pilihan) {
-                    case 1:
-                        transaksi.transaksiTravel(in);
-                        break;
-                    case 2:
-                        transaksi.transaksiSewaMobil(in, dataMobil);
-                        break;
-                    case 3:
-                        transaksi.tampilkanStruk();
-                        break;
-                    case 4:
-                        menuMobil = true;
-                        break;
-                    case 0:
+                    case 1 -> transaksi.transaksiTravel(in);
+                    case 2 -> transaksi.transaksiSewaMobil(in, kelolaMobil);
+                    case 3 -> transaksi.tampilkanStruk();
+                    case 4 -> menuMobil = true;
+                    case 0 -> {
                         run = false; 
                         System.out.println("Terima kasih telah menggunakan layanan Filkom Tour and Travel!");
-                        break;
-                    default:
-                        System.out.println("Pilihan tidak valid.");
+                    }
+                    default -> System.out.println("Pilihan tidak valid.");
                 }
             }   
         }
