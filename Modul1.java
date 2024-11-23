@@ -7,7 +7,7 @@ public class Modul1 {
         Scanner in = new Scanner(System.in);
         PengelolaanKaryawan kelolaKaryawan = new PengelolaanKaryawan();
         
-
+ 
         int n;
         boolean berhenti = false;
         boolean inputKaryawanLagi;
