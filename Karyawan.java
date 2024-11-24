@@ -11,6 +11,11 @@ public class Karyawan {
 
 
     //Constructor
+    public Karyawan() {
+
+    }
+
+    //Constructor
     public Karyawan (
         String nama, String alamat, String kategori, String shift,
         String namaBank, long noTelp, long noRek, char jenisKelamin
@@ -24,6 +29,39 @@ public class Karyawan {
         this.noRek = noRek;
         this.jenisKelamin = jenisKelamin;
     }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
+    }
+
+    public void setShift(String shift) {
+        this.shift = shift;
+    }
+    
+    public void setNamaBank(String namaBank) {
+        this.namaBank = namaBank;
+    }
+
+    public void setNoTelp(long noTelp) {
+        this.noTelp = noTelp;
+    }
+
+    public void setNoRek(long noRek) {
+        this.noRek = noRek;
+    }
+    
+    public void setJenisKelamin(char jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
+    }
+
 
     public String getNama() {return nama.toUpperCase();}
 

@@ -8,23 +8,26 @@ public class GajiKaryawan {
         {0.05, 0.06, 0.07}
     };
 
+    //Constructor
+    public GajiKaryawan() {
+    }
 
     //Constructor
     public GajiKaryawan(Karyawan karyawan) {
         if (karyawan.getKategori().equalsIgnoreCase("Supir Travel")) {
-            gajiPokokSatuan = bahanPerhitunganGaji[0][0];
-            upahLemburSatuan = bahanPerhitunganGaji[1][0];
-            pajakSatuan = bahanPerhitunganGaji[2][0];
+            this.gajiPokokSatuan = bahanPerhitunganGaji[0][0];
+            this.upahLemburSatuan = bahanPerhitunganGaji[1][0];
+            this.pajakSatuan = bahanPerhitunganGaji[2][0];
         }
         else if (karyawan.getKategori().equalsIgnoreCase("Supir Rent Car")) {
-            gajiPokokSatuan = bahanPerhitunganGaji[0][1];
-            upahLemburSatuan = bahanPerhitunganGaji[1][1];
-            pajakSatuan = bahanPerhitunganGaji[2][1];
+            this.gajiPokokSatuan = bahanPerhitunganGaji[0][1];
+            this.upahLemburSatuan = bahanPerhitunganGaji[1][1];
+            this.pajakSatuan = bahanPerhitunganGaji[2][1];
         }
         else if (karyawan.getKategori().equalsIgnoreCase("Admin")) {
-            gajiPokokSatuan = bahanPerhitunganGaji[0][2];
-            upahLemburSatuan = bahanPerhitunganGaji[1][2];
-            pajakSatuan = bahanPerhitunganGaji[2][2];
+            this.gajiPokokSatuan = bahanPerhitunganGaji[0][2];
+            this.upahLemburSatuan = bahanPerhitunganGaji[1][2];
+            this.pajakSatuan = bahanPerhitunganGaji[2][2];
         }
     }
 

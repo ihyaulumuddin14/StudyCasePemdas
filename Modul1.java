@@ -85,7 +85,7 @@ public class Modul1 {
                                     System.out.println("Karyawan tidak terdeteksi.");
                                 } else {
 
-                                    GajiKaryawan gajiKaryawan1 = null;
+                                    GajiKaryawan gajiKaryawan1 = new GajiKaryawan();
 
                                     konfirmasiValid = false;
                                     while (!konfirmasiValid) {

@@ -1,22 +1,22 @@
 package StudyCasePemdas;
 import java.util.Scanner;
 public class Transaksi {
-    private int maxTransaksi = 10;
-    private Transaksi[] daftarTransaksi = new Transaksi[maxTransaksi];
+    private int maksTransaksi = 10;
+    private Transaksi[] daftarTransaksi = new Transaksi[maksTransaksi];
     private String jenisLayanan;
     private String detailLayanan;
     private int nomorTransaksi;
     private int jumlahTagihan;
     private int transaksiCounter = 1;
     private int transaksiIndex = 0;
-    private String[] rute = {
+    private final String[] rute = {
         "Surabaya - Malang", 
         "Madura - Malang",
         "Banyuwangi - Malang",
         "Situbondo - Malang",
         "Tulungagung - Malang"
     };
-    private int[] harga = {100000, 200000, 250000, 175000, 125000};
+    private final int[] harga = {100000, 200000, 250000, 175000, 125000};
 
 
     //Conctructor
@@ -29,8 +29,8 @@ public class Transaksi {
 
     
     public void transaksiTravel(Scanner in) {
-        
-        if (transaksiIndex >= maxTransaksi) {
+
+        if (transaksiIndex >= maksTransaksi) {
             System.out.println("Jumlah maksimum transaksi telah tercapai.");
             return;
         }
